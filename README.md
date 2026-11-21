@@ -1,4 +1,4 @@
-# 审知 · 智能审计助手 Agent Harness
+# 审知 · 智能审计工作台 Agent Harness
 
 基于 Python 3.10+ 标准库的可运行项目：中文 Web 工作台、HTTP API、7 个独立 Skill、3 个专业 Agent、ReAct 执行、Swarm 协作、四层持久化记忆、YAML 约束和 SFT/RL 轨迹导出。默认本地规则模式使用合成审计数据，无第三方运行依赖，无密钥也可运行。
 
