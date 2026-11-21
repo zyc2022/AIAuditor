@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>审知 · 智能审计工作台</title><link rel="stylesheet" href="/style.css"><script src="/app.js" defer></script>
+</head>
+<body>
+  <aside class="sidebar">
+    <div class="brand"><span class="brand-icon">审</span><div>审知<span class="brand-sub">AUDIT INTELLIGENCE</span></div></div>
+    <div class="workspace-label">审计综合信息查询平台</div>
+    <div class="nav-item active"><span>◈</span> 智能审计工作台</div>
+    <div class="side-section"><div class="eyebrow">本次审计范围</div><label for="entity">审计对象</label><select id="entity" aria-label="审计对象"></select><div class="scope-note">数据权限在查询时校验。当前使用合成演示数据。</div></div>
+    <button id="new-session" class="secondary wide">＋ 新建会话</button>
+    <div class="agent-list"><div class="eyebrow">专业协作团队</div><div><span class="agent-dot teal"></span>审前 · 企业画像</div><div><span class="agent-dot blue"></span>审中 · 疑点取证</div><div><span class="agent-dot amber"></span>审后 · 报告生成</div></div>
+    <div class="side-bottom"><label for="token">API 令牌（配置后填写）</label><input id="token" type="password" autocomplete="off" placeholder="仅保留在当前页面内存"><button id="connect" class="secondary wide">连接服务</button><p>Agent Harness · v0.1<br>所有结论均需审计人员复核</p></div>
+  </aside>
+  <main>
+    <header><div><div class="eyebrow">WORKSPACE / AUDIT ASSISTANT</div><h1>智能审计工作台</h1><p>从企业画像到审计底稿，让每一项判断都有据可循。</p></div><span id="mode" class="badge">连接中</span></header>
+    <div id="error" role="alert" hidden></div>
+    <section class="metrics" aria-label="本次执行指标"><article><span>执行模式</span><strong id="metric-route">等待任务</strong><small>依据任务目标自动路由</small></article><article><span>可追溯证据</span><strong id="metric-evidence">—</strong><small>企业 · 交易 · 指南</small></article><article><span>风险线索</span><strong id="metric-risk">—</strong><small>规则命中，待进一步核实</small></article><article><span>本次耗时</span><strong id="metric-time">—</strong><small>单 Agent 预算 15 秒</small></article></section>
+    <div class="workspace">
+      <section class="chat-panel panel"><div class="panel-heading"><div><span class="live-dot"></span><strong>审计协作会话</strong></div><span id="session-label">新会话</span></div>
+        <div id="messages" class="messages" aria-live="polite"><div id="welcome" class="welcome"><div class="welcome-icon">◈</div><h2>把复杂审计任务交给协作团队</h2><p>选择企业，描述你的审计目标。助手将检索事实、定位疑点，并保留完整的工具执行轨迹。</p><div class="examples"><button data-query="请做企业画像分析">企业画像与交易概览 <span>↗</span></button><button data-query="核查重复发票疑点并给出取证建议">疑点定位与证据核查 <span>↗</span></button><button data-query="综合分析近三年关联交易风险，完成企业画像、疑点取证并生成报告">全流程协作与报告 <span>↗</span></button></div><div class="welcome-foot">7 个独立 Skill · 3 个专业 Agent · 4 层共享记忆</div></div></div>
+        <form id="chat-form"><label class="sr-only" for="query">审计问题</label><textarea id="query" rows="3" maxlength="8000" placeholder="描述审计任务，也可以继续追问刚才的疑点…"></textarea><div class="composer-foot"><span id="progress">工具调用有硬上限，结论附带证据来源</span><button id="send" type="submit">开始分析 <span>↑</span></button></div></form>
+      </section>
+      <section class="inspector panel"><div class="panel-heading"><strong>执行观察台</strong><span class="badge subtle">可追溯</span></div><div class="tabs" role="tablist"><button class="selected" role="tab" aria-selected="true" data-tab="evidence">证据</button><button role="tab" aria-selected="false" data-tab="tasks">任务</button><button role="tab" aria-selected="false" data-tab="memory">记忆</button><button role="tab" aria-selected="false" data-tab="training">轨迹</button></div>
+        <div id="tab-evidence" class="tab-body"><div class="empty-state">执行一次查询后，<br>在这里查看事实与证据来源。</div></div>
+        <div id="tab-tasks" class="tab-body" hidden><div class="empty-state">专业 Agent 的任务状态与依赖将在这里呈现。</div></div>
+        <div id="tab-memory" class="tab-body" hidden></div>
+        <div id="tab-training" class="tab-body" hidden><h3>Harness 训练轨迹</h3><p class="muted">轨迹包含工具选择、参数、观察、证据编号和质量信号。导出保留执行模式标签。</p><div class="training-callout">本地模式轨迹用于调试与格式验证。它不代表真实 LLM 推理轨迹，也不能直接证明后训练收益。</div><button class="secondary wide export" data-format="sft">导出 SFT · JSONL</button><button class="secondary wide export" data-format="rl">导出 RL · 规则奖励</button><button class="secondary wide export" data-format="raw">导出完整轨迹</button><p class="muted small">提供企业名、手机号、邮箱和令牌基础脱敏。真实数据用于训练前仍需人工审查；规则奖励尚未人工校准。</p><div id="trace-list"></div></div>
+      </section>
+    </div><footer>合成数据演示环境 · 风险线索不等于违规结论 · 证据不足会自动提示补充</footer>
+  </main>
+</body>
+</html>

@@ -1,0 +1,26 @@
+# Agent Harness 能力边界，运行时由 Harness 校验
+max_tool_calls: 3
+max_agent_seconds: 15
+required_evidence: true
+risk_marker: "[风险标记]"
+missing_evidence_notice: "[证据补充提醒] 结论仍需补充可追溯来源。"
+agents:
+  enterprise_profile:
+    - deep_search
+    - information_aggregation
+    - risk_assessment
+    - audit_guide
+    - deep_research
+  evidence_collection:
+    - deep_search
+    - text2sql
+    - risk_assessment
+    - audit_advice
+    - audit_guide
+  report_generation:
+    - information_aggregation
+    - risk_assessment
+    - audit_advice
+    - audit_guide
+    - deep_research
+

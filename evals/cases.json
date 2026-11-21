@@ -1,0 +1,12 @@
+[
+  {"id":"p1","query":"华东供应商企业画像","route":"single","expected_risks":["重复发票号","疑似拆分付款"]},
+  {"id":"p2","query":"远景科技企业画像","route":"single","expected_risks":[]},
+  {"id":"p3","query":"北方物流经营概况","route":"single","expected_risks":[]},
+  {"id":"e1","query":"华东供应商交易明细取证","route":"single","expected_risks":["重复发票号"]},
+  {"id":"e2","query":"远景科技付款取证建议","route":"single","expected_risks":[]},
+  {"id":"e3","query":"北方物流取证程序","route":"single","expected_risks":[]},
+  {"id":"r1","query":"华东供应商生成报告","route":"single","expected_risks":["期间付款超过合同额"]},
+  {"id":"s1","query":"华东供应商综合分析企业画像和疑点取证","route":"swarm","expected_risks":["重复发票号","逾期付款"]},
+  {"id":"s2","query":"华东供应商完成画像、取证并生成报告","route":"swarm","expected_risks":["重复发票号","疑似拆分付款"]},
+  {"id":"s3","query":"远景科技综合分析经营背景与取证并汇总报告","route":"swarm","expected_risks":[]}
+]
